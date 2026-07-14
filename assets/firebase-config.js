@@ -1,7 +1,7 @@
 export const firebaseConfig = {
   apiKey: "AIzaSyC-uuYK-MvujKYY-2NaSHZjUtRNZiDIhew",
   authDomain: "licznik-tort.firebaseapp.com",
-  databaseURL: "TUTAJ_BĘDZIE_DATABASE_URL",
+  databaseURL: "https://licznik-tort-default-rtdb.europe-west1.firebasedatabase.app/",
   projectId: "licznik-tort",
   storageBucket: "licznik-tort.firebasestorage.app",
   messagingSenderId: "845290922687",
