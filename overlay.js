@@ -1,0 +1,1 @@
+import{subscribe}from'./firebase.js';const c=document.querySelector('#count');let p=null;subscribe(v=>{c.textContent=v;if(v!==p){c.classList.remove('pulse');void c.offsetWidth;c.classList.add('pulse');p=v}});

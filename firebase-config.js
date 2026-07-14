@@ -1,0 +1,1 @@
+export const firebaseConfig={apiKey:"UZUPELNIJ",authDomain:"UZUPELNIJ.firebaseapp.com",databaseURL:"https://UZUPELNIJ-default-rtdb.europe-west1.firebasedatabase.app",projectId:"UZUPELNIJ",storageBucket:"UZUPELNIJ.appspot.com",messagingSenderId:"UZUPELNIJ",appId:"UZUPELNIJ"};
