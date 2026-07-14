@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "counters": {
+      "$room": {
+        ".read": true,
+        ".write": true,
+        "count": {
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 999999"
+        }
+      }
+    }
+  }
+}
