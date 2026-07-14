@@ -1,16 +1,39 @@
-<!doctype html>
-<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/style.css"><title>Licznik Tort</title></head>
-<body class="page"><main class="card control-card">
-<span class="eyebrow">PANEL STEROWANIA</span>
-<h1>🎂 Licznik Tort:</h1>
-<div id="count" class="control-count">0</div>
-<div class="control-grid">
-<button id="minus" class="control-button">−1</button>
-<button id="plus" class="control-button primary big">+1</button>
-<button id="reset" class="control-button reset">Reset</button>
-</div>
-<p class="keys"><kbd>Spacja</kbd>/<kbd>↑</kbd> +1 · <kbd>↓</kbd> −1 · <kbd>R</kbd> reset</p>
-<p id="status" class="status">Łączenie…</p>
-</main>
-<script type="module" src="assets/control.js"></script></body></html>
+import { subscribe, changeCount, resetCount } from "./firebase.js";
+
+const countEl = document.querySelector("#count");
+const statusEl = document.querySelector("#status");
+
+const plusButton = document.querySelector("#plus");
+const minusButton = document.querySelector("#minus");
+const resetButton = document.querySelector("#reset");
+
+function showError(error) {
+  console.error(error);
+  statusEl.textContent = "Błąd: " + (error?.message || "nieznany");
+}
+
+subscribe(
+  (count) => {
+    countEl.textContent = count;
+    statusEl.textContent = "Połączono";
+  },
+  showError
+);
+
+plusButton.addEventListener("click", () => changeCount(1));
+minusButton.addEventListener("click", () => changeCount(-1));
+resetButton.addEventListener("click", () => resetCount());
+
+window.addEventListener("keydown", (event) => {
+  const key = event.key.toLowerCase();
+
+  if (event.code === "Space" || event.key === "ArrowUp") {
+    event.preventDefault();
+    changeCount(1);
+  } else if (event.key === "ArrowDown") {
+    event.preventDefault();
+    changeCount(-1);
+  } else if (key === "r") {
+    resetCount();
+  }
+});
